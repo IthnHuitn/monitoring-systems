@@ -1,0 +1,28 @@
+filebeat.inputs:
+- type: container
+  paths:
+    - /var/lib/docker/containers/*/*.log
+
+  processors:
+    
+    # Извлекаем метаданные Docker
+    - add_docker_metadata:
+        host: "unix:///var/run/docker.sock"
+            
+    # Декодируем Docker JSON-логи
+    - decode_json_fields:
+        fields: ["message"]
+        target: "docker"
+        overwrite_keys: true
+
+    # Копируем docker.log в message
+    - copy_fields:
+        fields:
+          - from: "docker.log"
+            to: "message"
+        fail_on_error: false
+
+output.logstash:
+  hosts: ["logstash:5044"]
+
+logging.level: info
