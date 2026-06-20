@@ -13,5 +13,6 @@
 
 ### Задание 2
 
+[dummy_app](https://github.com/IthnHuitn/monitoring-systems/tree/elk/dummy)
 ![elk2-1](https://github.com/IthnHuitn/monitoring-systems/blob/elk/screens/elk2-1.png)
 ![elk2-2](https://github.com/IthnHuitn/monitoring-systems/blob/elk/screens/elk2-2.png)
